@@ -7,24 +7,24 @@ services:
       dockerfile: Dockerfile
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: example
-      POSTGRES_DB: mydb
+      POSTGRES_PASSWORD: 99.yoloco
+      POSTGRES_DB: clt
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./init-db:/docker-entrypoint-initdb.d  # Ruta local con los scripts SQL
+      - ./postgres/init-db:/docker-entrypoint-initdb.d  # Ruta local con los scripts SQL
     ports:
-      - "5432:5432"
+      - "5431:5432"
 
   api:
     build:
       context: ./pruebactl
       dockerfile: Dockerfile
     environment:
-      - ConnectionStrings__Postgres=Server=db;Port=5432;Database=clt;User=postgres;Password=99.yoloco;
+      - PostgreSQLConnection=Host=db;Port=5432;Database=clt;User=postgres;Password=99.yoloco;
     depends_on:
       - db
     ports:
-      - "5000:80"
+      - "5000:8080"
 
   react-app:
     build:
