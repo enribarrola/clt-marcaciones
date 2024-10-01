@@ -1,0 +1,6 @@
+@pruebactl_HostAddress = http://localhost:5116
+
+GET {{pruebactl_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

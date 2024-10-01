@@ -1,0 +1,59 @@
+# Sistema operativo
+# ====================
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración local de Visual Studio
+# ====================
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de compilación y binarios
+# ====================
+bin/
+obj/
+out/
+
+# Dependencias de NuGet
+# ====================
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Archivos de configuración de Rider (JetBrains)
+# ====================
+.idea/
+*.sln.iml
+
+# Archivos de publicación locales
+# ====================
+publish/
+*.publishsettings
+
+# Archivos de configuración del sistema de construcción (como MSBuild)
+# ====================
+*.targets
+
+# Archivos generados por la depuración
+# ====================
+*.log
+*.tlog
+*.ide.log
+*.pidb
+
+# Archivos temporales del sistema
+# ====================
+*.tmp
+*.temp
+
+# Archivos de configuración locales de Visual Studio Code
+# ====================
+.vscode/
+
+# Archivos de herramientas de análisis de código
+# ====================
+.analyzers/
