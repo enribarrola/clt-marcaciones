@@ -20,7 +20,7 @@ services:
       context: ./pruebactl
       dockerfile: Dockerfile
     environment:
-      - PostgreSQLConnection=Host=db;Port=5432;Database=clt;User=postgres;Password=99.yoloco;
+      - PostgreSQLConnection=Host=db;Port=5432;Database=clt;Username=postgres;Password=99.yoloco;
     depends_on:
       - db
     ports:
