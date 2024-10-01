@@ -17,7 +17,7 @@ services:
 
   api:
     build:
-      context: ./pruebactl/pruebactl
+      context: ./pruebactl
       dockerfile: Dockerfile
     environment:
       - ConnectionStrings__Postgres=Server=db;Port=5432;Database=clt;User=postgres;Password=99.yoloco;
