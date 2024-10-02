@@ -28,12 +28,28 @@ namespace pruebactl
             builder.Services.AddControllers()
             .AddNewtonsoftJson(options =>
             {
-                // Aqu� puedes agregar cualquier configuraci�n personalizada para Newtonsoft.Json
-                // A�ades el convertidor personalizado si es necesario (ej. para TimeSpan)
                 options.SerializerSettings.Converters.Add(new TimeSpanConverter());
             });
 
+			// Configurar CORS
+			var allowedOrigins = builder.Configuration["CORS_ORIGINS"]?.Split(',') ?? new string[0];
+			builder.Services.AddCors(options =>
+        	{
+            options.AddPolicy("AllowSpecificOrigins", builder =>
+            {
+                builder
+                    .WithOrigins(allowedOrigins)
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+            });
+        	});
+ 			
+			
+
             var app = builder.Build();
+			// Configurar CORS en la aplicación
+        	app.UseCors("AllowSpecificOrigins");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

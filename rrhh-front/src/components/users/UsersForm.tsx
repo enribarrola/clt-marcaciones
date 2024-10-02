@@ -10,7 +10,7 @@ import { errorHandler } from '../../utils/handlers';
 
 export default function UsersForm() {
   const form = useForm<Funcionario>();
-
+  
   const onSubmit: SubmitHandler<Funcionario> = async (funcionario) => {
     try {
       await axios.post(`${API_URL}/funcionario`, {
