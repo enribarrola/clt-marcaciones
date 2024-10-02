@@ -47,8 +47,6 @@ namespace pruebactl.Controllers
         {
             try
             {
-                
-                //verificar que el funcionario exista o este activo para poder registrar la marcacion
                 var funcionario = await _funcionarioService.GetFuncionarioByIdAsync(marcacion.id_funcionario);
                 if(funcionario == null)
                 {
@@ -102,7 +100,6 @@ namespace pruebactl.Controllers
         {
             try
             {
-                //verificar que la fecha desde sea menor a la fecha hasta
                 if (fecha_desde > fecha_hasta)
                 {
                     return BadRequest(new { message = "La fecha desde no puede ser mayor a la fecha hasta." });

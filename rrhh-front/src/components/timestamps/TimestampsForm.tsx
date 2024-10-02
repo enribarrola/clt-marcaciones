@@ -29,7 +29,8 @@ export default function TimestampsForm() {
       });
 
       form.reset();
-
+	  
+	  //actualiza el cache de swr para la tabla de marcaciones
 	  mutate(`${API_URL}/marcacion`);
 
       Swal.fire({
