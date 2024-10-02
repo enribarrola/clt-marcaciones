@@ -19,7 +19,7 @@ Sigue estos pasos para instalar y ejecutar el proyecto:
    Abre tu terminal y ejecuta el siguiente comando para clonar el repositorio:
 
    ```bash
-   git clone [https://github.com/tu-usuario/nombre-del-repositorio.git](https://github.com/enribarrola/clt-marcaciones.git)
+   git clone https://github.com/enribarrola/clt-marcaciones.git
    ```
 
 2. **Navegar a la carpeta del proyecto**
