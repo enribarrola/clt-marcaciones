@@ -14,7 +14,8 @@ namespace pruebactl
 
             // Configurar el servicio DbContext con PostgreSQL
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConnection")));
+                options.UseNpgsql(builder.Configuration["PostgreSQLConnection"]));
+                
 
             // Add services to the container.
             builder.Services.AddScoped<FuncionarioService>();
@@ -27,8 +28,8 @@ namespace pruebactl
             builder.Services.AddControllers()
             .AddNewtonsoftJson(options =>
             {
-                // Aquí puedes agregar cualquier configuración personalizada para Newtonsoft.Json
-                // Añades el convertidor personalizado si es necesario (ej. para TimeSpan)
+                // Aquï¿½ puedes agregar cualquier configuraciï¿½n personalizada para Newtonsoft.Json
+                // Aï¿½ades el convertidor personalizado si es necesario (ej. para TimeSpan)
                 options.SerializerSettings.Converters.Add(new TimeSpanConverter());
             });
 
