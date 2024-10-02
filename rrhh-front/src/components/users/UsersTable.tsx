@@ -54,7 +54,7 @@ export default function UsersTable() {
             <tr key={user.id_funcionario}>
               <td>{user.nombre}</td>
               <td>{user.apellido}</td>
-              <td>{user.id_funcionario}</td>
+              <td>{user.cedula}</td>
               <td>{new Date(user.fecha_nacimiento).toLocaleDateString()}</td>
               <td className='d-flex gap-2'>
                 <button

@@ -19,11 +19,6 @@ namespace pruebactl.Controllers
             {
                 var funcionario = await _funcionarioService.GetFuncionariosAsync();
 
-                if (funcionario.Count == 0)
-                {
-                    return NotFound();
-                }
-
                 return Ok(funcionario);
             }
             catch (Exception)
@@ -60,6 +55,13 @@ namespace pruebactl.Controllers
         {
             try
             {
+                //verificar que si el usuario existe por ci antes de crearlo
+                var exist = await _funcionarioService.GetFuncionarioByCiAsync(funcionario.cedula);
+                if(exist != null)
+                {
+                    return BadRequest(new { message = "El funcionario ya existe." });
+                }
+
                 var nuevoFuncionario = await _funcionarioService.CreateFuncionarioAsync(funcionario);
                 return CreatedAtAction(nameof(GetFuncionarioById), new { id = nuevoFuncionario.id_funcionario }, nuevoFuncionario);
             } catch (Exception)
@@ -75,11 +77,15 @@ namespace pruebactl.Controllers
         {
             try
             {
-   
+                var funcionarioExistente = await _funcionarioService.GetFuncionarioAsync(funcionario.cedula);
+                if (funcionarioExistente != null)
+                {
+                    return BadRequest(new { message = "Ya existe un funcionario con esa cedula" });
+                }
+
                 // Llamada al servicio para verificar y actualizar
                 var funcionarioActualizado = await _funcionarioService.UpdateFuncionarioAsync(id, funcionario);
 
-                // Si el funcionario no existe, devuelve 404 NotFound
                 if (funcionarioActualizado == null)
                 {
                     return NotFound();
@@ -89,7 +95,6 @@ namespace pruebactl.Controllers
             }
             catch (Exception)
             {
-                // Si ocurre cualquier otro tipo de excepción
                 return StatusCode(500, new { message = "Ocurrió un error en el servidor."});
             }
            
@@ -108,11 +113,10 @@ namespace pruebactl.Controllers
                     return NotFound(new { message = "Funcionario no encontrado." });
                 }
 
-                return NoContent();  // Código 204: Operación exitosa sin contenido
+                return NoContent(); 
             }
             catch (Exception)
             {
-                // Si ocurre cualquier otro tipo de excepción
                 return StatusCode(500, new { message = "Ocurrió un error en el servidor." });
             }
 

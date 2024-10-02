@@ -12,7 +12,7 @@ namespace pruebactl
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Configurar el servicio DbContext con PostgreSQL
+            // Configurar el servicio DbContext con PostgreSQL utilizando variables de entorno
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(builder.Configuration["PostgreSQLConnection"]));
                 
@@ -31,7 +31,7 @@ namespace pruebactl
                 options.SerializerSettings.Converters.Add(new TimeSpanConverter());
             });
 
-			// Configurar CORS
+			// Configurar CORS utilizando variables de entorno
 			var allowedOrigins = builder.Configuration["CORS_ORIGINS"]?.Split(',') ?? new string[0];
 			builder.Services.AddCors(options =>
         	{

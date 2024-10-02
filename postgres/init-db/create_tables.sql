@@ -1,6 +1,7 @@
 CREATE TABLE funcionarios (
     id_funcionario SERIAL PRIMARY KEY ,
     nombre VARCHAR(100) NOT NULL,
+	cedula int NOT NULL unique,
     apellido VARCHAR(100) NOT NULL,
     fecha_nacimiento DATE NOT null,
     estado int not null default 1

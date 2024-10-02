@@ -17,8 +17,8 @@ namespace pruebactl.Data
             modelBuilder.Entity<Funcionario>().ToTable("funcionarios");
             modelBuilder.Entity<Marcacion>().ToTable("marcaciones");
             modelBuilder.Entity<Marcacion>()
-                .HasOne(m => m.Funcionario) // Marcación tiene un Funcionario
-                .WithMany(f => f.Marcaciones) // Funcionario tiene muchas Marcaciones
+                .HasOne(m => m.Funcionario)
+                .WithMany(f => f.Marcaciones) 
                 .HasForeignKey(m => m.id_funcionario); // Clave foránea
         }
 

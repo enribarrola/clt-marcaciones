@@ -37,7 +37,7 @@ export default function UsersForm() {
       <form className='d-flex flex-column col-3' onSubmit={form.handleSubmit(onSubmit)}>
         <ValidatedInput name='nombre'>Nombre</ValidatedInput>
         <ValidatedInput name='apellido'>Apellido</ValidatedInput>
-        <ValidatedInput name='documentNumber'> Numero de documento</ValidatedInput>
+        <ValidatedInput name='cedula'> Numero de documento</ValidatedInput>
         <ValidatedInput
           name='fecha_nacimiento'
           inputType='date'

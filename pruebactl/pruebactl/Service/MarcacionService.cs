@@ -21,10 +21,11 @@ namespace pruebactl.Service
         {
             try
             {
-                // Incluir los datos del Funcionario asociado a cada Marcacion
+                // Incluir los datos del Funcionario asociado a cada Marcacion con un limite de 10
                 return await _context.Marcaciones
                     .Include(m => m.Funcionario)
-                    .OrderByDescending(m => m.id_marcacion)
+                    .OrderByDescending(m => m.fecha)
+                    .Take(10)
                     .ToListAsync();
             } catch (Exception)
             {

@@ -28,6 +28,20 @@ namespace pruebactl.Service
                 .FirstOrDefaultAsync();
         }
 
+        public async Task<Funcionario?> GetFuncionarioByCiAsync(int id)
+        {
+            return await _context.Funcionarios
+                .Where(f => f.cedula == id && f.estado == 1)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<Funcionario?> GetFuncionarioAsync(int id)
+        {
+            return await _context.Funcionarios
+                .Where(f => f.cedula == id)
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<Funcionario> CreateFuncionarioAsync(FuncionarioDTO funcionarioDto)
         {
             try
@@ -35,6 +49,7 @@ namespace pruebactl.Service
                 // Mapea el DTO al modelo Funcionario
                 var funcionario = new Funcionario
                 {
+                    cedula = funcionarioDto.cedula,
                     nombre = funcionarioDto.nombre,
                     apellido = funcionarioDto.apellido,
                     fecha_nacimiento = funcionarioDto.fecha_nacimiento
@@ -67,6 +82,7 @@ namespace pruebactl.Service
 
                 // Actualiza los valores del funcionario existente con los del DTO
                 funcionarioExistente.nombre = funcionario.nombre;
+                funcionarioExistente.cedula = funcionario.cedula;
                 funcionarioExistente.apellido = funcionario.apellido;
                 funcionarioExistente.fecha_nacimiento = funcionario.fecha_nacimiento;
 
@@ -89,10 +105,8 @@ namespace pruebactl.Service
         {
             try
             {
-                // Buscar el funcionario por ID
                 var funcionario = await GetFuncionarioByIdAsync(id);
 
-                // Si no existe, devuelve false
                 if (funcionario == null)
                 {
                     return false;

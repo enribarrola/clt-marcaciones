@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form';
-import useSWR from 'swr';
+import useSWR, {mutate} from 'swr';
 import { Funcionario } from '../../types/funcionario';
 import { API_URL } from '../../utils/constants';
 import fetcher from '../../db/fetcher';
@@ -30,6 +30,8 @@ export default function TimestampsForm() {
 
       form.reset();
 
+	  mutate(`${API_URL}/marcacion`);
+
       Swal.fire({
         title: 'Marcación registrada',
         icon: 'success'
@@ -40,7 +42,7 @@ export default function TimestampsForm() {
   };
   return (
     <FormProvider {...form}>
-      <form className='d-flex flex-column' onSubmit={form.handleSubmit(onSubmit)}>
+      <form className='d-flex flex-column col-3' onSubmit={form.handleSubmit(onSubmit)}>
         <label htmlFor='worker'>Trabajador</label>
         <select
           id='worker'

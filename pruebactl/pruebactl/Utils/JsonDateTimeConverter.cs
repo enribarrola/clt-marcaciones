@@ -6,7 +6,8 @@ namespace pruebactl.Utils
 {
     public class JsonDateTimeConverter : JsonConverter<DateTime>
     {
-        private readonly string _format = "dd-MM-yyyy"; // Define el formato que deseas
+        // para el formateo de las horas
+        private readonly string _format = "dd-MM-yyyy"; 
 
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

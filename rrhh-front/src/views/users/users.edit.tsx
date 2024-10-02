@@ -47,7 +47,7 @@ export default function UsersEdit() {
           <div className='mb-3'>
             <ValidatedInput name='nombre'>Nombre</ValidatedInput>
             <ValidatedInput name='apellido'>Apellido</ValidatedInput>
-            <ValidatedInput name='id_funcionario'> Numero de documento</ValidatedInput>
+            <ValidatedInput name='cedula'> Numero de documento</ValidatedInput>
             <ValidatedInput
               name='fecha_nacimiento'
               inputType='date'

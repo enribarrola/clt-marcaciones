@@ -17,3 +17,10 @@ export interface MarcacionSearch {
   fecha_desde: string;
   fecha_hasta: string;
 }
+
+export interface MarcacionResponse {
+	nombre_completo: string;
+	fecha: string;
+	hora_entrada: string;
+	hora_salida: string;
+}
